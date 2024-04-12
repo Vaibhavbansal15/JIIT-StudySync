@@ -1,1 +1,0 @@
-# JIIT-StudySync
