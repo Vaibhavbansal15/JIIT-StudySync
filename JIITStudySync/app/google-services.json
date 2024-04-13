@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "299222454019",
+    "project_id": "studysync-4e939",
+    "storage_bucket": "studysync-4e939.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299222454019:android:c1266d84a6c46b998ea336",
+        "android_client_info": {
+          "package_name": "com.minorproject.jiitstudysync"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4gcD8kNRIQWjPmk5FPqbEGb8i5IxJp9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
