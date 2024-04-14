@@ -30,7 +30,7 @@
             android:id="@+id/signupPageTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="100dp"
             android:text="Sign Up"
             android:textColor="@color/white"
             android:textSize="36sp"
@@ -43,11 +43,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="12dp"
             android:orientation="vertical"
-            app:constraint_referenced_ids="signupEmail,signupEnroll,signupSemester,signupBranch,signupBatch,signupPassword"
+            app:constraint_referenced_ids="signupEmail,signupName,signupEnroll,signupSem,signupBatch,signupPassword"
             app:flow_verticalGap="20dp"
             app:layout_constraintBottom_toTopOf="@id/barrier2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,8 +61,20 @@
             android:background="@drawable/custom_edittext"
             android:drawableStart="@drawable/ic_name"
             android:drawablePadding="10dp"
-            android:hint="Name"
+            android:hint="Email"
             android:inputType="textEmailAddress"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/signupName"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableStart="@drawable/ic_enrollment"
+            android:drawablePadding="10dp"
+            android:hint="Name"
+            android:inputType="text"
             android:textColorHint="@color/white"
             android:textSize="20sp" />
 
@@ -71,7 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:background="@drawable/custom_edittext"
-            android:drawableStart="@drawable/ic_enrollment"
+            android:drawableStart="@drawable/ic_semester"
             android:drawablePadding="10dp"
             android:hint="Enrollment"
             android:inputType="number"
@@ -79,26 +91,14 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/signupSemester"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:background="@drawable/custom_edittext"
-            android:drawableStart="@drawable/ic_semester"
-            android:drawablePadding="10dp"
-            android:hint="Semester"
-            android:inputType="number"
-            android:textColorHint="@color/white"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/signupBranch"
+            android:id="@+id/signupSem"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:background="@drawable/custom_edittext"
             android:drawableStart="@drawable/ic_branch"
             android:drawablePadding="10dp"
-            android:hint="Branch(CSE/IT/ECE)"
-            android:inputType="text"
+            android:hint="Semester"
+            android:inputType="number"
             android:textColorHint="@color/white"
             android:textSize="20sp" />
 
@@ -163,7 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="40dp"
             app:layout_constraintBottom_toBottomOf="@+id/signUpLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
