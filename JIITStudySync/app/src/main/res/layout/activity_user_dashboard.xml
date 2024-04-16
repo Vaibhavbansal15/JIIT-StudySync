@@ -12,7 +12,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Primary"
+        app:cardBackgroundColor="@color/Primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,23 +29,19 @@
                 android:layout_marginTop="24dp"
                 android:backgroundTint="@color/Primary"
                 android:src="@drawable/menu_icon"
+                android:contentDescription="navigation menu"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
+            <ImageView
                 android:id="@+id/dashboardProfileImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_marginTop="24dp"
+                android:background="@drawable/circular_image"
+                android:scaleType="centerInside"
                 app:layout_constraintStart_toEndOf="@+id/dashboardMenu"
-                app:layout_constraintTop_toBottomOf="@+id/dashboardMenu">
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/reset_password_img" />
-
-            </androidx.cardview.widget.CardView>
+                app:layout_constraintTop_toBottomOf="@+id/dashboardMenu"/>
 
             <TextView
                 android:id="@+id/dashboardUsername"
@@ -121,7 +117,7 @@
                 <Button
                     android:id="@+id/editProfileBtn"
                     android:layout_width="wrap_content"
-                    android:layout_height="45dp"
+                    android:layout_height="50dp"
                     android:layout_marginEnd="40dp"
                     android:background="@drawable/custom_edittext"
                     android:text="Edit Profile"
@@ -131,7 +127,7 @@
                 <Button
                     android:id="@+id/logoutBtn"
                     android:layout_width="wrap_content"
-                    android:layout_height="45dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/custom_edittext"
                     android:text="LogOut"
                     android:textColor="@color/white"
@@ -143,7 +139,15 @@
 
     </androidx.cardview.widget.CardView>
 
-
+    <ImageView
+        android:id="@+id/addIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/upload_icon"
+        app:layout_constraintBottom_toTopOf="@+id/dashboardFooter"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dashboardFooter"
@@ -154,40 +158,102 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
+            android:id="@+id/home"
+            android:layout_width="65dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="centerCrop"
+            android:tint="@color/Primary"
+            android:src="@drawable/home_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"
+            android:text="Home"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/home"
+            app:layout_constraintStart_toStartOf="@+id/home"
+            app:layout_constraintTop_toBottomOf="@+id/home" />
+
+        <ImageButton
             android:id="@+id/pyqSection"
             android:layout_width="80dp"
             android:layout_height="60dp"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="20dp"
             android:background="@color/white"
+            android:contentDescription="pyq section"
             android:src="@drawable/pyq_icon"
-            android:tint="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/home"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PYQs"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/pyqSection"
+            app:layout_constraintStart_toStartOf="@+id/pyqSection"
+            app:layout_constraintTop_toBottomOf="@+id/pyqSection" />
 
         <ImageButton
             android:id="@+id/notesSection"
             android:layout_width="80dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="20dp"
             android:background="@color/white"
+            android:contentDescription="notes Section"
             android:src="@drawable/notes_icon"
-            android:tint="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/forumSection"
-            app:layout_constraintStart_toEndOf="@+id/pyqSection" />
+            app:layout_constraintStart_toEndOf="@+id/pyqSection"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/notesSection"
+            app:layout_constraintStart_toStartOf="@+id/notesSection"
+            app:layout_constraintTop_toBottomOf="@+id/notesSection" />
 
         <ImageButton
             android:id="@+id/forumSection"
             android:layout_width="80dp"
             android:layout_height="60dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
             android:background="@color/white"
+            android:contentDescription="forum section"
             android:src="@drawable/forum_icon"
-            android:tint="@color/black"
+            android:tint="@color/Primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"
+            android:text="Forum"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/forumSection"
+            app:layout_constraintStart_toStartOf="@+id/forumSection"
+            app:layout_constraintTop_toBottomOf="@+id/forumSection" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

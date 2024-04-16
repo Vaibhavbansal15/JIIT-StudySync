@@ -28,5 +28,16 @@ class UserDashboard : AppCompatActivity() {
             finish()
         }
 
+        binding.pyqSection.setOnClickListener {
+            startActivity(Intent(this, PYQsPage::class.java))
+        }
+
+        binding.notesSection.setOnClickListener {
+            startActivity(Intent(this, NotesPage::class.java))
+        }
+
+        binding.forumSection.setOnClickListener {
+            Toast.makeText(this, "Forum Section", Toast.LENGTH_SHORT).show()
+        }
     }
 }
