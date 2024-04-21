@@ -4,5 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name = "Primary">#00C0EA</color>
     <color name = "EditTextBackground">#2E01305A</color>
+    <color name = "EditTextBackground2">#2E4B4B2E</color>
     <color name = "HintColor">#D3D3D3C4</color>
+    <color name = "HintColor2">#888888</color>
 </resources>

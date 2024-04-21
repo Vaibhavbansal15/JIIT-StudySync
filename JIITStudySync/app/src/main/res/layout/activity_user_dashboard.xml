@@ -8,253 +8,174 @@
     android:background="@color/white"
     tools:context=".UserDashboard">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/Primary"
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/dashboardMenu"
-                android:layout_width="55dp"
-                android:layout_height="57dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="@color/Primary"
-                android:src="@drawable/menu_icon"
-                android:contentDescription="navigation menu"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/dashboardProfileImage"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/circular_image"
-                android:scaleType="centerInside"
-                app:layout_constraintStart_toEndOf="@+id/dashboardMenu"
-                app:layout_constraintTop_toBottomOf="@+id/dashboardMenu"/>
-
-            <TextView
-                android:id="@+id/dashboardUsername"
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="UserName"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/dashboardProfileImage"
-                app:layout_constraintTop_toTopOf="@+id/dashboardProfileImage" />
-
-            <TextView
-                android:id="@+id/dashboardUserenroll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Enrollment"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/dashboardProfileImage"
-                app:layout_constraintTop_toBottomOf="@+id/dashboardUsername" />
-
-            <TextView
-                android:id="@+id/dashboardUserBatch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Batch"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/dashboardProfileImage"
-                app:layout_constraintTop_toBottomOf="@+id/dashboardUserenroll" />
-
-            <LinearLayout
-                android:id="@+id/dashboardRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toEndOf="@+id/dashboardProfileImage"
-                app:layout_constraintTop_toBottomOf="@+id/dashboardUserBatch">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rating : "
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/userRating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="A+"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardBackgroundColor="@color/Primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dashboardRating">
+                app:layout_constraintTop_toTopOf="parent">
 
-                <Button
-                    android:id="@+id/editProfileBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="40dp"
-                    android:background="@drawable/custom_edittext"
-                    android:text="Edit Profile"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/logoutBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:background="@drawable/custom_edittext"
-                    android:text="LogOut"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    <ImageButton
+                        android:id="@+id/dashboardMenu"
+                        android:layout_width="55dp"
+                        android:layout_height="57dp"
+                        android:backgroundTint="@color/Primary"
+                        android:contentDescription="navigation menu"
+                        android:src="@drawable/menu_icon"
+                        tools:layout_editor_absoluteX="12dp"
+                        tools:layout_editor_absoluteY="24dp" />
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/dashboardProfileImage"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="24dp"
+                        android:background="@drawable/circular_image"
+                        android:scaleType="centerInside"
+                        app:layout_constraintStart_toEndOf="@+id/dashboardMenu"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboardMenu" />
+
+                    <TextView
+                        android:id="@+id/dashboardUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="UserName"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/dashboardProfileImage"
+                        app:layout_constraintTop_toTopOf="@+id/dashboardProfileImage" />
+
+                    <TextView
+                        android:id="@+id/dashboardUserenroll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Enrollment"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/dashboardProfileImage"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboardUsername" />
+
+                    <TextView
+                        android:id="@+id/dashboardUserBatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Batch"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/dashboardProfileImage"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboardUserenroll" />
+
+                    <LinearLayout
+                        android:id="@+id/dashboardRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toEndOf="@+id/dashboardProfileImage"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboardUserBatch">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rating : "
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/userRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="A+"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboardRating">
+
+                        <Button
+                            android:id="@+id/editProfileBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_marginEnd="40dp"
+                            android:background="@drawable/custom_edittext"
+                            android:text="Edit Profile"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:id="@+id/logoutBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:background="@drawable/custom_edittext"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:text="LogOut"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/addIcon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="24dp"
+                android:src="@drawable/upload_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </FrameLayout>
 
-    <ImageView
-        android:id="@+id/addIcon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/upload_icon"
-        app:layout_constraintBottom_toTopOf="@+id/dashboardFooter"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/dashboardFooter"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu">
 
-        <ImageButton
-            android:id="@+id/home"
-            android:layout_width="65dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="centerCrop"
-            android:tint="@color/Primary"
-            android:src="@drawable/home_icon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="24dp"
-            android:text="Home"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/home"
-            app:layout_constraintStart_toStartOf="@+id/home"
-            app:layout_constraintTop_toBottomOf="@+id/home" />
-
-        <ImageButton
-            android:id="@+id/pyqSection"
-            android:layout_width="80dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:background="@color/white"
-            android:contentDescription="pyq section"
-            android:src="@drawable/pyq_icon"
-            app:layout_constraintStart_toEndOf="@+id/home"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PYQs"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/pyqSection"
-            app:layout_constraintStart_toStartOf="@+id/pyqSection"
-            app:layout_constraintTop_toBottomOf="@+id/pyqSection" />
-
-        <ImageButton
-            android:id="@+id/notesSection"
-            android:layout_width="80dp"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:contentDescription="notes Section"
-            android:src="@drawable/notes_icon"
-            app:layout_constraintEnd_toStartOf="@+id/forumSection"
-            app:layout_constraintStart_toEndOf="@+id/pyqSection"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Notes"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/notesSection"
-            app:layout_constraintStart_toStartOf="@+id/notesSection"
-            app:layout_constraintTop_toBottomOf="@+id/notesSection" />
-
-        <ImageButton
-            android:id="@+id/forumSection"
-            android:layout_width="80dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/white"
-            android:contentDescription="forum section"
-            android:src="@drawable/forum_icon"
-            android:tint="@color/Primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="24dp"
-            android:text="Forum"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/forumSection"
-            app:layout_constraintStart_toStartOf="@+id/forumSection"
-            app:layout_constraintTop_toBottomOf="@+id/forumSection" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

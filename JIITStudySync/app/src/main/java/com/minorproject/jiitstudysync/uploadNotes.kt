@@ -1,20 +1,39 @@
 package com.minorproject.jiitstudysync
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.minorproject.jiitstudysync.databinding.ActivityUploadNotesBinding
 
-class uploadNotes : AppCompatActivity() {
+class UploadNotes : AppCompatActivity() {
+
+    private val binding : ActivityUploadNotesBinding by lazy {
+        ActivityUploadNotesBinding.inflate(layoutInflater)
+    }
+    private val contract = registerForActivityResult(ActivityResultContracts.GetContent()){
+        binding.imgDetails.setImageURI(it)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_upload_notes)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        binding.selectNotesBtn.setOnClickListener{
+            contract.launch("image/*")
+        }
+
+        binding.uploadNotesBtn.setOnClickListener{
+            Toast.makeText(this, "Notes uploaded", Toast.LENGTH_SHORT).show()
         }
     }
 }
