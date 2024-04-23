@@ -22,7 +22,6 @@ class UserDashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-//        replaceFragment(Home())
 
         auth = FirebaseAuth.getInstance()
         binding.logoutBtn.setOnClickListener {
@@ -42,7 +41,7 @@ class UserDashboard : AppCompatActivity() {
                 R.id.notesSection -> replaceFragment(NotesPage())
 
                 else -> {
-
+                    return@setOnItemSelectedListener false
                 }
             }
             true
