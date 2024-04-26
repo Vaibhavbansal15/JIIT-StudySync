@@ -7,7 +7,6 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.minorproject.jiitstudysync.databinding.ActivityUserDashboardBinding
 
@@ -37,14 +36,24 @@ class UserDashboard : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
-                R.id.pyqSection -> replaceFragment(PyqPage())
-                R.id.notesSection -> replaceFragment(NotesPage())
-
+                R.id.pyqSection -> {
+                    startActivity(Intent(this, PYQActivity::class.java))
+//                    finish()
+                    true
+                }
+                R.id.notesSection -> {
+                    startActivity(Intent(this, NotesActivity::class.java))
+//                    finish()
+                    true
+                }
+                R.id.forumSection -> {
+                    Toast.makeText(this, "Forum Section ", Toast.LENGTH_SHORT).show()
+                    true
+                }
                 else -> {
-                    return@setOnItemSelectedListener false
+                    false
                 }
             }
-            true
         }
     }
 
@@ -68,12 +77,5 @@ class UserDashboard : AppCompatActivity() {
             }
         }
         popupMenu.show()
-    }
-
-    private fun replaceFragment(fragment: Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayout, fragment)
-        fragmentTransaction.commit()
     }
 }

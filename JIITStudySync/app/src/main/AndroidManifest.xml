@@ -13,6 +13,12 @@
         android:theme="@style/Theme.JIITStudySync"
         tools:targetApi="31">
         <activity
+            android:name=".NotesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PYQActivity"
+            android:exported="false" />
+        <activity
             android:name=".UploadNotes"
             android:exported="false" />
         <activity
