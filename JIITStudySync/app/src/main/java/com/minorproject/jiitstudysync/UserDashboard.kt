@@ -13,6 +13,7 @@ import com.minorproject.jiitstudysync.databinding.ActivityUserDashboardBinding
 class UserDashboard : AppCompatActivity() {
 
     private lateinit var auth : FirebaseAuth
+
     private val binding : ActivityUserDashboardBinding by lazy {
         ActivityUserDashboardBinding.inflate(layoutInflater)
     }
@@ -38,12 +39,12 @@ class UserDashboard : AppCompatActivity() {
             when(it.itemId){
                 R.id.pyqSection -> {
                     startActivity(Intent(this, PYQActivity::class.java))
-//                    finish()
+                    finish()
                     true
                 }
                 R.id.notesSection -> {
                     startActivity(Intent(this, NotesActivity::class.java))
-//                    finish()
+                    finish()
                     true
                 }
                 R.id.forumSection -> {

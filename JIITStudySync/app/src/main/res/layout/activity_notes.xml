@@ -8,23 +8,34 @@
     android:background="@color/white"
     tools:context=".NotesActivity">
 
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/back_btn"
+            android:contentDescription="Back Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/notesSearchBar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:layout_marginTop="32dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="56dp"
             android:layout_marginEnd="20dp"
+            android:autofillHints="Subject"
             android:background="@drawable/custom_upload_edittext"
             android:drawableStart="@drawable/search_icon"
             android:drawablePadding="20dp"
             android:hint="Subject Name or Subject Code"
-            android:autofillHints="Subject"
-            android:textColorHint="@color/HintColor2"
             android:textColor="@color/black"
+            android:textColorHint="@color/HintColor2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/backBtn" />
 
         <ListView
             android:id="@+id/pyqList"

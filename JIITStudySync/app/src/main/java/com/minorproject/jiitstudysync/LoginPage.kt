@@ -19,7 +19,8 @@ class LoginPage : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val currUser : FirebaseUser? = auth.currentUser
-        if(currUser != null){
+        val verified = auth.currentUser?.isEmailVerified
+        if(currUser != null && verified == true){
             startActivity(Intent(this, UserDashboard::class.java))
             finish()
         }
@@ -42,9 +43,16 @@ class LoginPage : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "Logged in successfully", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, UserDashboard::class.java))
-                        finish()
+                        val verified = auth.currentUser?.isEmailVerified
+                        if(verified == true) {
+                            Toast.makeText(this, "Logged in successfully", Toast.LENGTH_SHORT)
+                                .show()
+                            startActivity(Intent(this, UserDashboard::class.java))
+                            finish()
+                        }else{
+                            Toast.makeText(this, "Please verify your Email", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     } else {
                         Toast.makeText(
                             this,

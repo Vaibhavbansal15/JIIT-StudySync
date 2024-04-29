@@ -6,11 +6,16 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.minorproject.jiitstudysync.databinding.ActivitySignupPageBinding
 
 class SignupPage : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+
     private val binding : ActivitySignupPageBinding by lazy {
         ActivitySignupPageBinding.inflate(layoutInflater)
     }
@@ -28,23 +33,24 @@ class SignupPage : AppCompatActivity() {
 
         // Authenticating user Signup btn click event
         auth = FirebaseAuth.getInstance()
+        database = Firebase.database.reference
 
         binding.signupBtn.setOnClickListener{
             val email = binding.signupEmail.text.toString()
             val username = binding.signupName.text.toString()
-            val enroll = binding.signupEnroll
+            val enroll = binding.signupEnroll.text.toString()
             val sem = binding.signupSem.text.toString()
-            val batch = binding.signupBatch.text.toString()
+            val branch = binding.signupBranch.text.toString()
             val password = binding.signupPassword.text.toString()
 
             // validating user Inputs
             if(email.isEmpty() || username.isEmpty() ||
-                enroll.length() == 0 || sem.isEmpty() ||
-                batch.isEmpty() || password.isEmpty()
+                enroll.isEmpty() || sem.isEmpty() ||
+                branch.isEmpty() || password.isEmpty()
                 ){
                     Toast.makeText(this, "Please Fill all the details", Toast.LENGTH_SHORT).show()
-            }else if(batch.length > 3 && batch[0].isLetter()){
-                Toast.makeText(this, "Enter a Valid Batch", Toast.LENGTH_SHORT).show()
+            }else if(branch.length > 3){
+                Toast.makeText(this, "Enter a Valid Branch", Toast.LENGTH_SHORT).show()
             }
             else if(sem.toInt() > 10){
                 Toast.makeText(this, "Enter a valid Semester", Toast.LENGTH_SHORT).show()
@@ -53,11 +59,21 @@ class SignupPage : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) {task ->
                         if(task.isSuccessful){
-                            Toast.makeText(this,
-                                "Registered Successfully!!",
-                                Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this, LoginPage::class.java))
-                            finish()
+                            auth.currentUser?.sendEmailVerification()
+                                ?.addOnSuccessListener {
+                                    Toast.makeText(this,
+                                        "Please verify your Email!!",
+                                        Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this, LoginPage::class.java))
+                                    finish()
+
+                                    val user = UserDetails(email, username, enroll, sem, branch, password)
+                                    database.child("Users").setValue(user)
+
+                                }
+                                ?.addOnFailureListener{
+                                    Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+                            }
                         }
                         else{
                             Toast.makeText(this,

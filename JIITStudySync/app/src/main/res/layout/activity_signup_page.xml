@@ -47,7 +47,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="12dp"
             android:orientation="vertical"
-            app:constraint_referenced_ids="signupEmail,signupName,signupEnroll,signupSem,signupBatch,signupPassword"
+            app:constraint_referenced_ids="signupEmail,signupName,signupEnroll,signupSem,signupBranch,signupPassword"
             app:flow_verticalGap="20dp"
             app:layout_constraintBottom_toTopOf="@id/barrier2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -103,13 +103,13 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/signupBatch"
+            android:id="@+id/signupBranch"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:background="@drawable/custom_edittext"
             android:drawableStart="@drawable/ic_batch"
             android:drawablePadding="10dp"
-            android:hint="Batch"
+            android:hint="Branch(CSE/ECE/IT)"
             android:inputType="text"
             android:textColorHint="@color/white"
             android:textSize="20sp" />

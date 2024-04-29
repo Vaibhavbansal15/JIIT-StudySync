@@ -2,7 +2,6 @@ package com.minorproject.jiitstudysync
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +17,11 @@ class NotesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
+
+        binding.backBtn.setOnClickListener{
+            startActivity(Intent(this, UserDashboard::class.java))
+            finish()
+        }
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
