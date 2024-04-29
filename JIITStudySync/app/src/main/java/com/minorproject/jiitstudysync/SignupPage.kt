@@ -7,8 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.FirebaseDatabase
 import com.minorproject.jiitstudysync.databinding.ActivitySignupPageBinding
 
 class SignupPage : AppCompatActivity() {
@@ -33,7 +32,7 @@ class SignupPage : AppCompatActivity() {
 
         // Authenticating user Signup btn click event
         auth = FirebaseAuth.getInstance()
-        database = Firebase.database.reference
+        database = FirebaseDatabase.getInstance().reference
 
         binding.signupBtn.setOnClickListener{
             val email = binding.signupEmail.text.toString()
@@ -59,17 +58,22 @@ class SignupPage : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) {task ->
                         if(task.isSuccessful){
+
+                            // verifying the user with email authentication
                             auth.currentUser?.sendEmailVerification()
                                 ?.addOnSuccessListener {
                                     Toast.makeText(this,
                                         "Please verify your Email!!",
                                         Toast.LENGTH_SHORT).show()
+
+                                    // saving user data on firebase
+                                    val user = UserDetails(email, username, enroll, sem, branch, password)
+                                    val userID = auth.currentUser!!.uid
+                                    database.child("Users").child(userID).setValue(user)
+
+                                    // updating the UI
                                     startActivity(Intent(this, LoginPage::class.java))
                                     finish()
-
-                                    val user = UserDetails(email, username, enroll, sem, branch, password)
-                                    database.child("Users").setValue(user)
-
                                 }
                                 ?.addOnFailureListener{
                                     Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
