@@ -13,6 +13,9 @@
         android:theme="@style/Theme.JIITStudySync"
         tools:targetApi="31">
         <activity
+            android:name=".SubjectsPYQ"
+            android:exported="false" />
+        <activity
             android:name=".NotesActivity"
             android:exported="false" />
         <activity

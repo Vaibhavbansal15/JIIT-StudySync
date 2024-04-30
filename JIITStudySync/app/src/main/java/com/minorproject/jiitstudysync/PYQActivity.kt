@@ -75,9 +75,19 @@ class PYQActivity : AppCompatActivity() {
                         subjectArrayList.add(subject!!)
                     }
                 }
-                subjectRecyclerView.adapter = SubjectsAdapter(subjectArrayList)
+
+                val adapter = SubjectsAdapter(subjectArrayList)
+                subjectRecyclerView.adapter = adapter
+                adapter.setOnItemClickListener(object : SubjectsAdapter.onItemClickListener{
+                    override fun onItemClick(position: Int) {
+                        val intent = Intent(this@PYQActivity, SubjectsPYQ::class.java)
+                        startActivity(intent)
+                    }
+
+                })
 
             }
+
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@PYQActivity, "Failed to fetch Subjects", Toast.LENGTH_SHORT).show()
             }

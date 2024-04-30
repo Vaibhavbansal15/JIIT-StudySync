@@ -75,7 +75,16 @@ class NotesActivity : AppCompatActivity() {
                         subjectArrayList.add(subject!!)
                     }
                 }
-                subjectRecyclerView.adapter = SubjectsAdapter(subjectArrayList)
+
+                val adapter = SubjectsAdapter(subjectArrayList)
+                subjectRecyclerView.adapter = adapter
+                adapter.setOnItemClickListener(object : SubjectsAdapter.onItemClickListener{
+                    override fun onItemClick(position: Int) {
+                        val intent = Intent(this@NotesActivity, SubjectsPYQ::class.java)
+                        startActivity(intent)
+                    }
+
+                })
 
             }
 

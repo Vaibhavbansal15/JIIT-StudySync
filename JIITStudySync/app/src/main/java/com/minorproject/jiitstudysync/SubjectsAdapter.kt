@@ -10,10 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 // Adapter class
 class SubjectsAdapter(private val subjectList : ArrayList<SubjectDetails>) : RecyclerView.Adapter<SubjectsAdapter.SubjectsViewHolder>() {
 
+
+    private lateinit var mListener : onItemClickListener
+    interface onItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
+    
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubjectsViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.custom_subject_list,
             parent, false)
-        return SubjectsViewHolder(itemView)
+        return SubjectsViewHolder(itemView, mListener)
     }
 
     override fun getItemCount(): Int {
@@ -29,9 +40,15 @@ class SubjectsAdapter(private val subjectList : ArrayList<SubjectDetails>) : Rec
 
 
     // View Holder Class
-    class SubjectsViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    class SubjectsViewHolder(itemView : View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView){
         val sName : TextView  = itemView.findViewById(R.id.sub_name)
         val sCode : TextView  = itemView.findViewById(R.id.sub_code)
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
     }
 
 }
