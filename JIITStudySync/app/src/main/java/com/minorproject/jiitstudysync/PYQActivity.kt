@@ -78,11 +78,9 @@ class PYQActivity : AppCompatActivity() {
                 subjectRecyclerView.adapter = SubjectsAdapter(subjectArrayList)
 
             }
-
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@PYQActivity, "Failed to fetch Subjects", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 }
