@@ -41,8 +41,8 @@ class SubjectsAdapter(private val subjectList : ArrayList<SubjectDetails>) : Rec
 
     // View Holder Class
     class SubjectsViewHolder(itemView : View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView){
-        val sName : TextView  = itemView.findViewById(R.id.sub_name)
-        val sCode : TextView  = itemView.findViewById(R.id.sub_code)
+        val sName : TextView  = itemView.findViewById(R.id.pyq_sub_name)
+        val sCode : TextView  = itemView.findViewById(R.id.pyq_sub_code)
 
         init {
             itemView.setOnClickListener {

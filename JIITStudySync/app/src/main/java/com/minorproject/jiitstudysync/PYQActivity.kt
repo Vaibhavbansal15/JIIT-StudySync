@@ -81,6 +81,8 @@ class PYQActivity : AppCompatActivity() {
                 adapter.setOnItemClickListener(object : SubjectsAdapter.onItemClickListener{
                     override fun onItemClick(position: Int) {
                         val intent = Intent(this@PYQActivity, SubjectsPYQ::class.java)
+                        intent.putExtra("pyqSubName", subjectArrayList[position].name)
+                        intent.putExtra("pyqSubCode", subjectArrayList[position].code)
                         startActivity(intent)
                     }
 
