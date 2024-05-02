@@ -80,8 +80,10 @@ class NotesActivity : AppCompatActivity() {
                 subjectRecyclerView.adapter = adapter
                 adapter.setOnItemClickListener(object : SubjectsAdapter.onItemClickListener{
                     override fun onItemClick(position: Int) {
-//                        val intent = Intent(this@NotesActivity, SubjectsPYQ::class.java)
-//                        startActivity(intent)
+                        val intent = Intent(this@NotesActivity, SubjectNotes::class.java)
+                        intent.putExtra("notesSubName", subjectArrayList[position].name)
+                        intent.putExtra("notesSubCode", subjectArrayList[position].code)
+                        startActivity(intent)
                     }
 
                 })
