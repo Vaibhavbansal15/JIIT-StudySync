@@ -39,9 +39,24 @@
         android:textColorHint="@color/HintColor2"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText1" />
+
+    <EditText
+        android:id="@+id/selectNotesBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/custom_upload_edittext"
+        android:hint="Description"
+        android:textAlignment="center"
+        android:textColorHint="@color/HintColor2"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <ImageView
         android:id="@+id/imgDetails"
@@ -53,23 +68,6 @@
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@+id/selectNotesBtn"
         app:layout_constraintTop_toBottomOf="@+id/selectNotesBtn" />
-
-    <Button
-        android:id="@+id/selectNotesBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/custom_upload_edittext"
-        android:hint="Select Documents"
-        android:textAlignment="center"
-        android:textColorHint="@color/HintColor2"
-        android:textSize="22dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <Button
         android:id="@+id/uploadNotesBtn"
