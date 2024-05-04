@@ -1,12 +1,12 @@
 package com.minorproject.jiitstudysync
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.documentfile.provider.DocumentFile
 import com.minorproject.jiitstudysync.databinding.ActivityUploadNotesBinding
 
 class UploadNotes : AppCompatActivity() {
@@ -14,26 +14,26 @@ class UploadNotes : AppCompatActivity() {
     private val binding : ActivityUploadNotesBinding by lazy {
         ActivityUploadNotesBinding.inflate(layoutInflater)
     }
-//    private val contract = registerForActivityResult(ActivityResultContracts.GetContent()){
-//        binding.imgDetails.setImageURI(it)
-//    }
+    private var pdfUri : Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        binding.selectNotesBtn.setOnClickListener{
+            launcher.launch("application/pdf")
         }
 
-//        binding..setOnClickListener{
-//            contract.launch("image/*")
-//        }
-
         binding.uploadNotesBtn.setOnClickListener{
-            Toast.makeText(this, "Notes uploaded", Toast.LENGTH_SHORT).show()
+            val subName = binding.notesSubName.text.toString()
+            val subCode = binding.notesSubCode.text.toString()
+            val desc = binding.notesDescription.text.toString()
+
+            if(subName.isEmpty() || subCode.isEmpty() || desc.isEmpty()){
+                Toast.makeText(this, "Please fill all the details", Toast.LENGTH_SHORT).show()
+            }else {
+                Toast.makeText(this, "Notes uploaded", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.uploadNotesBackBtn.setOnClickListener {
@@ -41,4 +41,11 @@ class UploadNotes : AppCompatActivity() {
             finish()
         }
     }
+
+    private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()){uri ->
+        pdfUri = uri
+        val fileName = uri?.let { DocumentFile.fromSingleUri(this, it)?.name }
+        binding.pdfFileName.text = fileName.toString()
+    }
+
 }

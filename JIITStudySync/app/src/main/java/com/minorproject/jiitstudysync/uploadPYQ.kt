@@ -38,6 +38,8 @@ class UploadPYQ : AppCompatActivity() {
         )
 
         binding.selectImg.setOnClickListener {
+            val fileName : String = binding.pyqSubCode.text.toString()+"_"+binding.pyqExam.text.toString()+"_"+binding.pyqYear.text.toString()
+            binding.imgName.setText(fileName)
             galleryImage.launch("image/*")
         }
 

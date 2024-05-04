@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/pyqSubName"
+        android:id="@+id/notesSubName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/upload_notes_back_btn" />
 
     <EditText
-        android:id="@+id/pyqSubCode"
+        android:id="@+id/notesSubCode"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -49,7 +49,7 @@
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pyqSubName" />
+        app:layout_constraintTop_toBottomOf="@+id/notesSubName" />
 
     <EditText
         android:id="@+id/notesDescription"
@@ -61,34 +61,52 @@
         android:background="@drawable/custom_upload_edittext"
         android:hint="Description"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textColorHint="@color/HintColor2"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pyqSubCode" />
+        app:layout_constraintTop_toBottomOf="@+id/notesSubCode" />
 
-    <ImageView
-        android:id="@+id/imgDetails"
-        android:layout_width="250dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/notes_icon"
-        android:text="Selected Image"
-        android:scaleType="center"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@+id/notesDescription"
-        app:layout_constraintStart_toStartOf="@+id/notesDescription"
+    <TextView
+        android:id="@+id/pdfFileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Choose File"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notesDescription" />
 
     <Button
-        android:id="@+id/uploadNotesBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/selectNotesBtn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginTop="40dp"
-        android:text="Upload"
+        android:text="Select File"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgDetails" />
+        app:layout_constraintTop_toBottomOf="@+id/pdfFileName" />
+
+    <Button
+        android:id="@+id/uploadNotesBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:text="Upload File"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectNotesBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,7 @@ class PYQActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.pyqSection -> {
-                    startActivity(Intent(this, PYQActivity::class.java))
+                    startActivity(Intent(this , PYQActivity::class.java))
                     finish()
                     true
                 }
@@ -66,7 +66,7 @@ class PYQActivity : AppCompatActivity() {
 
     private fun getSubjectData() {
         databaseReference = FirebaseDatabase.getInstance().getReference("Subjects")
-
+        
         databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
@@ -85,7 +85,6 @@ class PYQActivity : AppCompatActivity() {
                         intent.putExtra("pyqSubCode", subjectArrayList[position].code)
                         startActivity(intent)
                     }
-
                 })
 
             }
