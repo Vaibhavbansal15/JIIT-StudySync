@@ -1,9 +1,9 @@
 package com.minorproject.jiitstudysync
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -14,9 +14,9 @@ class UploadNotes : AppCompatActivity() {
     private val binding : ActivityUploadNotesBinding by lazy {
         ActivityUploadNotesBinding.inflate(layoutInflater)
     }
-    private val contract = registerForActivityResult(ActivityResultContracts.GetContent()){
-        binding.imgDetails.setImageURI(it)
-    }
+//    private val contract = registerForActivityResult(ActivityResultContracts.GetContent()){
+//        binding.imgDetails.setImageURI(it)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +28,17 @@ class UploadNotes : AppCompatActivity() {
             insets
         }
 
-        binding.selectNotesBtn.setOnClickListener{
-            contract.launch("image/*")
-        }
+//        binding..setOnClickListener{
+//            contract.launch("image/*")
+//        }
 
         binding.uploadNotesBtn.setOnClickListener{
             Toast.makeText(this, "Notes uploaded", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.uploadNotesBackBtn.setOnClickListener {
+            startActivity(Intent(this, UserDashboard::class.java))
+            finish()
         }
     }
 }

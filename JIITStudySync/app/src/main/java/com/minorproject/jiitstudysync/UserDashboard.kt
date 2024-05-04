@@ -94,11 +94,13 @@ class UserDashboard : AppCompatActivity() {
             when (item.itemId) {
                 R.id.uploadPYQs -> {
                     startActivity(Intent(this@UserDashboard, UploadPYQ::class.java))
+                    finish()
 //                    Toast.makeText(this, "Upload PYQs", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.uploadNotes -> {
                     startActivity(Intent(this@UserDashboard, UploadNotes::class.java))
+                    finish()
 //                    Toast.makeText(this, "Upload Notes", Toast.LENGTH_SHORT).show()
                     true
                 }

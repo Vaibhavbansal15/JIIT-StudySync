@@ -8,25 +8,34 @@
     android:background="@color/white"
     tools:context=".UploadNotes">
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/upload_notes_back_btn"
+        android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/custom_upload_edittext"
-        android:hint="Subject Name"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textColorHint="@color/HintColor2"
-        android:textSize="22dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="15dp"
+        android:src="@drawable/back_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/pyqSubName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/custom_upload_edittext"
+        android:hint="Subject Name"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/HintColor2"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload_notes_back_btn" />
+
+    <EditText
+        android:id="@+id/pyqSubCode"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -40,10 +49,10 @@
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText1" />
+        app:layout_constraintTop_toBottomOf="@+id/pyqSubName" />
 
     <EditText
-        android:id="@+id/selectNotesBtn"
+        android:id="@+id/notesDescription"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -56,18 +65,20 @@
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/pyqSubCode" />
 
     <ImageView
         android:id="@+id/imgDetails"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
         android:layout_marginTop="20dp"
-        android:text="Selected Image"
         android:src="@drawable/notes_icon"
+        android:text="Selected Image"
+        android:scaleType="center"
         android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="@+id/selectNotesBtn"
-        app:layout_constraintTop_toBottomOf="@+id/selectNotesBtn" />
+        app:layout_constraintEnd_toEndOf="@+id/notesDescription"
+        app:layout_constraintStart_toStartOf="@+id/notesDescription"
+        app:layout_constraintTop_toBottomOf="@+id/notesDescription" />
 
     <Button
         android:id="@+id/uploadNotesBtn"
