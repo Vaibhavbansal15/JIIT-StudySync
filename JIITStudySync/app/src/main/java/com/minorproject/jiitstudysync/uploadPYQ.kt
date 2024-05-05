@@ -76,7 +76,7 @@ class UploadPYQ : AppCompatActivity() {
         progressDialog.show()
 
         val subjectCode = binding.pyqSubCode.text.toString()
-        val fileName : String = binding.pyqSubCode.text.toString()+"_"+binding.pyqExam.text.toString()+"_"+binding.pyqYear.text.toString()
+        val fileName : String = binding.pyqSubCode.text.toString()+"_"+binding.pyqExam.text.toString()+"_"+binding.pyqYear.text.toString()+"_"+System.currentTimeMillis().toString()
         storageReference.getReference("Uploaded_PYQs").child("$subjectCode/$fileName").putFile(imageUri)
             .addOnSuccessListener {
                 progressDialog.dismiss()
@@ -85,6 +85,8 @@ class UploadPYQ : AppCompatActivity() {
                 binding.pyqYear.text.clear()
                 binding.pyqExam.text.clear()
                 binding.pyqImage.setImageURI(null)
+                binding.imgName.setText("Choose image")
+
                 Toast.makeText(this, "Image Uploaded Successfully....", Toast.LENGTH_SHORT).show()
             }.addOnFailureListener{
                 progressDialog.dismiss()

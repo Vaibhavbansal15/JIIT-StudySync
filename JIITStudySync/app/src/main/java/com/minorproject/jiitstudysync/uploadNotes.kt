@@ -17,7 +17,7 @@ import com.minorproject.jiitstudysync.databinding.ActivityUploadNotesBinding
 class UploadNotes : AppCompatActivity() {
 
 
-    private lateinit var storgaeReference: StorageReference
+    private lateinit var storageReference: StorageReference
 
     private val binding : ActivityUploadNotesBinding by lazy {
         ActivityUploadNotesBinding.inflate(layoutInflater)
@@ -28,7 +28,7 @@ class UploadNotes : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        storgaeReference = FirebaseStorage.getInstance().getReference("Uploaded_Notes")
+        storageReference = FirebaseStorage.getInstance().getReference("Uploaded_Notes")
 
         binding.selectNotesBtn.setOnClickListener{
             launcher.launch("application/pdf")
@@ -64,8 +64,8 @@ class UploadNotes : AppCompatActivity() {
         progressDialog.show()
 
         val code = binding.notesSubCode.text.toString()
-        val fileName = binding.notesSubCode.text.toString()+"_"+binding.notesDescription.text.toString()
-        val mStorageRef = storgaeReference.child("$code/$fileName")
+        val fileName = binding.notesSubCode.text.toString()+"_"+binding.notesDescription.text.toString()+"_"+System.currentTimeMillis().toString()
+        val mStorageRef = storageReference.child("$code/$fileName")
         pdfUri?.let {uri ->
             mStorageRef.putFile(uri)
                 .addOnSuccessListener {
