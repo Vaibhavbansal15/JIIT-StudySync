@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.minorproject.jiitstudysync.databinding.CustomSubjectNotesItemBinding
 
-class SubjectNotesAdapter : ListAdapter<NotesFile, SubjectNotesAdapter.SubjectNotesViewHolder>(NotesDiffCallback()) {
+class SubjectNotesAdapter(private val listener : PdfClickListener) : ListAdapter<NotesFile, SubjectNotesAdapter.SubjectNotesViewHolder>(NotesDiffCallback()) {
     inner class SubjectNotesViewHolder(private val binding : CustomSubjectNotesItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init{
             binding.root.setOnClickListener {
-
+                listener.onPdfClicked(getItem(adapterPosition))
             }
         }
 
@@ -36,4 +36,8 @@ class SubjectNotesAdapter : ListAdapter<NotesFile, SubjectNotesAdapter.SubjectNo
     override fun onBindViewHolder(holder: SubjectNotesViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
+}
+
+interface PdfClickListener {
+    fun onPdfClicked(notesFile: NotesFile)
 }

@@ -15,26 +15,26 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/notesIcon"
+            android:id="@+id/pyqIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/notes_icon"
+            android:src="@drawable/pyq_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/notesFileName"
+            android:id="@+id/pyqFileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="No pdf file choosen"
+            android:text="No PYQ found"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/notesIcon" />
+            app:layout_constraintTop_toBottomOf="@+id/pyqIcon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

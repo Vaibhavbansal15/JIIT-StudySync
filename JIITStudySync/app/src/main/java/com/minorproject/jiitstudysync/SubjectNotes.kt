@@ -1,7 +1,7 @@
 package com.minorproject.jiitstudysync
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.GridLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.minorproject.jiitstudysync.databinding.ActivitySubjectNotesBinding
 
-class SubjectNotes : AppCompatActivity() {
+class SubjectNotes : AppCompatActivity(), PdfClickListener {
 
     private val binding : ActivitySubjectNotesBinding by lazy{
         ActivitySubjectNotesBinding.inflate(layoutInflater)
@@ -38,10 +38,9 @@ class SubjectNotes : AppCompatActivity() {
 
         binding.notesRecyclerView.setHasFixedSize(true)
         binding.notesRecyclerView.layoutManager = GridLayoutManager(this, 1)
-        notesAdapter = SubjectNotesAdapter()
+        notesAdapter = SubjectNotesAdapter(this)
         binding.notesRecyclerView.adapter = notesAdapter
         getAllNotes()
-
     }
 
     private fun getAllNotes() {
@@ -62,9 +61,16 @@ class SubjectNotes : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@SubjectNotes, error.message.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@SubjectNotes, error.message, Toast.LENGTH_SHORT).show()
             }
 
         })
+    }
+
+    override fun onPdfClicked(notesFile: NotesFile) {
+        val intent = Intent(this, NotesViewerActivity::class.java)
+        intent.putExtra("fileName", notesFile.fileName)
+        intent.putExtra("downloadUrl", notesFile.downloadUrl)
+        startActivity(intent)
     }
 }
