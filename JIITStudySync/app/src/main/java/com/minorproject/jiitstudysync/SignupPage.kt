@@ -1,5 +1,6 @@
 package com.minorproject.jiitstudysync
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -55,6 +56,12 @@ class SignupPage : AppCompatActivity() {
                 Toast.makeText(this, "Enter a valid Semester", Toast.LENGTH_SHORT).show()
             }
             else{
+
+                val progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
+
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) {task ->
                         if(task.isSuccessful){
@@ -72,10 +79,12 @@ class SignupPage : AppCompatActivity() {
                                     database.child("Users").child(userID).setValue(user)
 
                                     // updating the UI
+                                    progressDialog.dismiss()
                                     startActivity(Intent(this, LoginPage::class.java))
                                     finish()
                                 }
                                 ?.addOnFailureListener{
+                                    progressDialog.dismiss()
                                     Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
                             }
                         }

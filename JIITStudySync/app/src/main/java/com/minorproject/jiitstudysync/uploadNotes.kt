@@ -8,16 +8,15 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.documentfile.provider.DocumentFile
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
 import com.minorproject.jiitstudysync.databinding.ActivityUploadNotesBinding
 
 class UploadNotes : AppCompatActivity() {
 
 
     private lateinit var storageReference: StorageReference
+
 
     private val binding : ActivityUploadNotesBinding by lazy {
         ActivityUploadNotesBinding.inflate(layoutInflater)
@@ -28,10 +27,10 @@ class UploadNotes : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        storageReference = FirebaseStorage.getInstance().getReference("Uploaded_Notes")
+        storageReference = FirebaseStorage.getInstance().reference
 
         binding.selectNotesBtn.setOnClickListener{
-            launcher.launch("application/pdf")
+            selectDocs.launch("application/pdf")
         }
 
         binding.uploadNotesBtn.setOnClickListener{
@@ -65,18 +64,22 @@ class UploadNotes : AppCompatActivity() {
 
         val code = binding.notesSubCode.text.toString()
         val fileName = binding.notesSubCode.text.toString()+"_"+binding.notesDescription.text.toString()+"_"+System.currentTimeMillis().toString()
-        val mStorageRef = storageReference.child("$code/$fileName")
+        val mStorageRef = storageReference.child("Uploaded_Notes").child("$code/$fileName")
         pdfUri?.let {uri ->
             mStorageRef.putFile(uri)
                 .addOnSuccessListener {
 
+                    // resetting the UI components
+                    pdfUri = null
                     binding.notesSubCode.text.clear()
                     binding.notesSubName.text.clear()
                     binding.notesDescription.text.clear()
                     binding.pdfFileName.setText("Choose File")
 
+                    // updating the UI
                     progressDialog.dismiss()
                     Toast.makeText(this, "File Uploaded Successfully....", Toast.LENGTH_SHORT).show()
+
                 }.addOnFailureListener{
                     progressDialog.dismiss()
                     Toast.makeText(this, "Failed to Upload!!", Toast.LENGTH_SHORT).show()
@@ -84,7 +87,7 @@ class UploadNotes : AppCompatActivity() {
         }
     }
 
-    private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()){uri ->
+    private val selectDocs = registerForActivityResult(ActivityResultContracts.GetContent()){uri ->
         pdfUri = uri
         val fileName = uri?.let { DocumentFile.fromSingleUri(this, it)?.name }
         binding.pdfFileName.text = fileName.toString()

@@ -69,6 +69,7 @@ class UploadPYQ : AppCompatActivity() {
     }
 
     private fun uploadImage() {
+
         // showing progress dialog
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Uploading File....")

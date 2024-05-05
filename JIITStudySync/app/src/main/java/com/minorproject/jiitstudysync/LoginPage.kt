@@ -1,5 +1,6 @@
 package com.minorproject.jiitstudysync
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -32,6 +33,7 @@ class LoginPage : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+
         binding.loginBtn.setOnClickListener{
             val email = binding.loginEmail.text.toString()
             val password = binding.loginPass.text.toString()
@@ -40,16 +42,24 @@ class LoginPage : AppCompatActivity() {
                 Toast.makeText(this, "Enter all the Details", Toast.LENGTH_SHORT).show()
             }
             else{
+                val progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("Logging in")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
+
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+
                         val verified = auth.currentUser?.isEmailVerified
                         if(verified == true) {
                             Toast.makeText(this, "Logged in successfully", Toast.LENGTH_SHORT)
                                 .show()
+                            progressDialog.dismiss()
                             startActivity(Intent(this, UserDashboard::class.java))
                             finish()
                         }else{
+                            progressDialog.dismiss()
                             Toast.makeText(this, "Please verify your Email", Toast.LENGTH_SHORT)
                                 .show()
                         }
