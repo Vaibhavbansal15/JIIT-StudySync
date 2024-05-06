@@ -8,6 +8,8 @@
     android:background="@color/white"
     tools:context=".SubjectsPYQ">
 
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
@@ -67,21 +69,25 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
         <EditText
+            android:id="@+id/searchPyqYear"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/custom_upload_edittext"
             android:hint="Year"
+            android:textColor="@color/black"
             android:textColorHint="@color/HintColor2"
             android:paddingStart="22dp"
             android:textSize="16dp" />
 
         <EditText
+            android:id="@+id/searchPyqExam"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
             android:background="@drawable/custom_upload_edittext"
             android:hint="Examination"
+            android:textColor="@color/black"
             android:textColorHint="@color/HintColor2"
             android:paddingStart="22dp"
             android:textSize="16dp"/>
@@ -99,16 +105,84 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/subject_pyqs"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/frontPage"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:padding="5dp"
-        tools:listitem="@layout/custom_subject_pyq_item"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="15dp"
+        android:backgroundTint="@color/Primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchPyqBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/searchPyqBtn">
+
+        <TextView
+            android:id="@+id/pyqFrontPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:text="FrontPage"
+            android:layout_marginVertical="25dp"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/right_arrow_icon"
+            android:layout_gravity="end"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/backPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="15dp"
+        android:backgroundTint="@color/Primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frontPage">
+
+        <TextView
+            android:id="@+id/pyqBackPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:text="BackPage"
+            android:layout_marginVertical="25dp"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/right_arrow_icon"
+            android:layout_gravity="end"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/subject_pyqs"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:padding="5dp"-->
+<!--        tools:listitem="@layout/custom_subject_pyq_item"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/searchPyqBtn" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

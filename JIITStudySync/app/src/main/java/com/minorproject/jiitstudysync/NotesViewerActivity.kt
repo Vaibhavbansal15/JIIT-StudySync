@@ -20,7 +20,7 @@ class NotesViewerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val fileName = intent.extras?.getString("fileName")
+//        val fileName = intent.extras?.getString("fileName")
         val downloadUrl = intent.extras?.getString("downloadUrl")
 
         lifecycleScope.launch(Dispatchers.IO) {
