@@ -60,6 +60,7 @@ class UserDashboard : AppCompatActivity() {
                     true
                 }
                 R.id.forumSection -> {
+                    startActivity(Intent(this, ForumPage::class.java))
                     Toast.makeText(this, "Forum Section ", Toast.LENGTH_SHORT).show()
                     true
                 }

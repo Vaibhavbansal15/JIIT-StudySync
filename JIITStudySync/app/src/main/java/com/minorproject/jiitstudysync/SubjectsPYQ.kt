@@ -1,5 +1,6 @@
 package com.minorproject.jiitstudysync
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
@@ -33,6 +34,11 @@ class SubjectsPYQ : AppCompatActivity() {
 
         binding.searchPyqBtn.setOnClickListener {
 
+            val progressDialog = ProgressDialog(this)
+            progressDialog.setMessage("Fetching..")
+            progressDialog.setCancelable(false)
+            progressDialog.show()
+
             val year = binding.searchPyqYear.text.toString()
             val exam = binding.searchPyqExam.text.toString()
 
@@ -40,6 +46,7 @@ class SubjectsPYQ : AppCompatActivity() {
                 frontImageName = ""
                 backImageName = ""
                 Toast.makeText(this, "please fill the details to search", Toast.LENGTH_SHORT).show()
+                if(progressDialog.isShowing) progressDialog.dismiss()
             }
             else {
 
@@ -56,6 +63,7 @@ class SubjectsPYQ : AppCompatActivity() {
                 storageRef1.getFile(localFile1)
                     .addOnSuccessListener {
                         binding.pyqFrontPage.setText(imageName1)
+                        if(progressDialog.isShowing) progressDialog.dismiss()
                     }.addOnFailureListener {
                         binding.pyqFrontPage.setText("No Data found")
                         Toast.makeText(
@@ -63,6 +71,7 @@ class SubjectsPYQ : AppCompatActivity() {
                             "No front Page",
                             Toast.LENGTH_SHORT
                         ).show()
+                        if(progressDialog.isShowing) progressDialog.dismiss()
                     }
 
                 val storageRef2 =
@@ -72,6 +81,7 @@ class SubjectsPYQ : AppCompatActivity() {
                 storageRef2.getFile(localFile2)
                     .addOnSuccessListener {
                         binding.pyqBackPage.setText(imageName2)
+                        if(progressDialog.isShowing) progressDialog.dismiss()
                     }.addOnFailureListener {
                         binding.pyqBackPage.setText("No Data found")
                         Toast.makeText(
@@ -79,6 +89,7 @@ class SubjectsPYQ : AppCompatActivity() {
                             "No Back Page",
                             Toast.LENGTH_SHORT
                         ).show()
+                        if(progressDialog.isShowing) progressDialog.dismiss()
                     }
             }
         }
@@ -95,6 +106,10 @@ class SubjectsPYQ : AppCompatActivity() {
             intent.putExtra("backPage", backImageName)
             intent.putExtra("subCode", sCode.text)
             startActivity(intent)
+        }
+
+        binding.analyzeBtn.setOnClickListener {
+            startActivity(Intent(this, COAnalysisPage::class.java))
         }
     }
 }

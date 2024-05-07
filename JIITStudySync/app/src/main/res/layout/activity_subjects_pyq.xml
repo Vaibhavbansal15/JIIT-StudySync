@@ -9,7 +9,6 @@
     tools:context=".SubjectsPYQ">
 
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
@@ -62,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_margin="5dp"
         android:orientation="horizontal"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,9 +96,15 @@
 
     <Button
         android:id="@+id/searchPyqBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext"
+        android:textColor="@color/Primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
         android:padding="5dp"
         android:text="Search"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +115,9 @@
         android:id="@+id/frontPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:cardElevation="10dp"
         app:cardCornerRadius="15dp"
         android:backgroundTint="@color/Primary"
@@ -126,11 +134,11 @@
             android:layout_marginStart="20dp"
             android:text="FrontPage"
             android:layout_marginVertical="25dp"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="20dp"
@@ -144,6 +152,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:cardElevation="10dp"
         app:cardCornerRadius="15dp"
         android:backgroundTint="@color/Primary"
@@ -160,11 +170,11 @@
             android:layout_marginStart="20dp"
             android:text="BackPage"
             android:layout_marginVertical="25dp"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="20dp"
@@ -173,16 +183,14 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/subject_pyqs"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:padding="5dp"-->
-<!--        tools:listitem="@layout/custom_subject_pyq_item"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/searchPyqBtn" />-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/analyzeBtn"
+        android:layout_width="55dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="45dp"
+        android:src="@drawable/pyq_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
